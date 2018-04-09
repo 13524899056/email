@@ -2,19 +2,40 @@
 
 <configuration scan="true">
     <property scope="context" name="pattern" value="%d %-5p %c - %m%n" />
-    <appender name="stdio" class="ch.qos.logback.core.ConsoleAppender">
+      <!--<appender name="stdio" class="ch.qos.logback.core.ConsoleAppender">-->
+    <!--<encoder>-->
+    <!--<charset>utf-8</charset>-->
+    <!--<Pattern>${pattern}</Pattern>-->
+    <!--</encoder>-->
+    <!--</appender>-->
+
+    <!--<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">-->
+    <!--<resetJUL>true</resetJUL>-->
+    <!--</contextListener>-->
+
+    <!--<root level="INFO">-->
+    <!--<appender-ref ref="stdio"/>-->
+    <!--</root>-->
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>f:/mail.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--<fileNamePattern>${catalina.base}/logs/logFileUser.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
         <encoder>
             <charset>utf-8</charset>
             <Pattern>${pattern}</Pattern>
+            <!--<Pattern>%d %-5p %c - %m%n</Pattern>-->
         </encoder>
     </appender>
-	
-    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
-        <resetJUL>true</resetJUL>
-    </contextListener>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <appender-ref ref="file"/>
+    </appender>
 
     <root level="INFO">
-        <appender-ref ref="stdio"/>
+        <appender-ref ref="file"/>
     </root>
-
 </configuration>

@@ -24,11 +24,13 @@ public class EmailController {
     @RequestMapping("/sendMail")
     public Object sendMail(){
         boolean hasToSend = true;
+        boolean success = false;
         int pageNo = 1 ;
-        int pageSize = 50;
+        int pageSize = 500;
         List<Map<String,Object>> users = null;
         int count = 0;
         List<String> ls = new ArrayList<>();
+        List<String> fails = new ArrayList<>();
         while(hasToSend){
             users = sendMailLogic.findUsers(pageNo,pageSize);
             if(users == null || users.size() == 0){
@@ -37,16 +39,20 @@ public class EmailController {
                 pageNo++;
                 for(Map<String,Object> user:users){
                     String email = user.get("email").toString();
-                    MailUtil.getInstance().sendNotice(email);
-                    System.out.println(email);
+                    success = MailUtil.getInstance().sendNotice(email);
                     count++;
-                    ls.add(email);
+                    if(success) {
+                        ls.add(email);
+                    }else{
+                        fails.add(email);
+                    }
                 }
             }
         }
         Map result = new HashMap<>();
         result.put("sendNum",count);
-        result.put("emails",ls);
+        result.put("success",ls);
+        result.put("fail",fails);
         return result;
     }
 }

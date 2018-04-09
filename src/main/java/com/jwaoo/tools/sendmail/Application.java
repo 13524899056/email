@@ -1,5 +1,7 @@
 package com.jwaoo.tools.sendmail;
 
+import com.jwaoo.common.core.utils.LogUtils;
+import com.jwaoo.tools.sendmail.logic.SendMailLogic;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,11 +30,13 @@ public class Application extends SpringBootServletInitializer {
         SpringApplication app = new SpringApplication(Application.class);
         app.setBannerMode(Banner.Mode.OFF);
         app.run(args);
+        SendMailLogic.sendMail();
     }
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-
+        LogUtils.log4Info("start134");
+        ///SendMailLogic.sendMail();
     }
 }

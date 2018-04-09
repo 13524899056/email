@@ -205,8 +205,12 @@ public class MailUtil {
                 "    Hello Friends,\n" +
                 "  </div>\n" +
                 "  <div style=\"margin-top:20px;\">\n" +
-                "    To create a better and safer experience for users, we decide to use Sense Player instead of Sense Lovers. (Android users are not included. If you are, you can ignore the email. ) \n" +
-                "    Please excuse us for any inconvenience we may have caused you. Here is the instruction that can help you download and install Sense Player. If there is any question, please feel free to contact us at <a href=\"mailto:customerservice@senselovers.com\"><u>customerservice@senselovers.com</u></a> Thanks!\n" +
+                "    <div id=\"\" class=\"\">\n" +
+                "      <span class=\"\">To create a better and safer experience for users, we decide to use Sense Player instead of Sense Lovers. (Android users are not included. If you are, you can ignore the email. ) </span>\n" +
+                "    </div>\n" +
+                "    <div id=\"\" class=\"\">\n" +
+                "      <span class=\"\">Please excuse us for any inconvenience we may have caused you. Here is the instruction that can help you download and install Sense Player. If there is any question, please feel free to contact us at <a href=\"mailto:customerservice@senselovers.com\"><u>customerservice@senselovers.com</u></a> Thanks!</span>\n" +
+                "    </div>\n" +
                 "  </div>\n" +
                 "  <div style=\"margin-top:10px;\">\n" +
                 "    <span >1. Please search “SensePlayer”in your App Store to download it.</span>\n" +
@@ -235,10 +239,10 @@ public class MailUtil {
                 "      Warm Regards,\n" +
                 "    </div>\n" +
                 "    <div style=\"margin-top:10px;margin-bottom:30px;\">\n" +
-                "      Sense Lovers Technical Support\n" +
+                "      Sense Lovers Technical Support.\n" +
                 "    </div>\n" +
                 "  </div>\n" +
-                " </div>\n";
+                " </div>";
 
         String content = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=gb2312'/></head><body>" + HefURL2 + "<br></body></html>";
         try {
